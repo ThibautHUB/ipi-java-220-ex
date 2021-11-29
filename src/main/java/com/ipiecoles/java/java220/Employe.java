@@ -14,6 +14,8 @@ public abstract class Employe {
     private String matricule;
     private LocalDate dateEmbauche;
     private Double salaire;
+    private Boolean tempsPartiel;
+    private String sexe;
 
     public Employe(){
 
@@ -25,6 +27,16 @@ public abstract class Employe {
         this.matricule = matricule;
         this.dateEmbauche = dateEmbauche;
         this.salaire = salaire;
+    }
+
+    public Employe(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, Boolean tempsPartiel, String sexe){
+        this.nom = nom;
+        this.prenom = prenom;
+        this.matricule = matricule;
+        this.dateEmbauche = dateEmbauche;
+        this.salaire = salaire;
+        this.tempsPartiel = tempsPartiel;
+        this.sexe = sexe;
     }
 
     public final Integer getNombreAnneeAnciennete(){
@@ -53,6 +65,8 @@ public abstract class Employe {
                 ", matricule='" + matricule + '\'' +
                 ", dateEmbauche=" + dateEmbauche +
                 ", salaire=" + salaire +
+                ", tempsPartiel=" + tempsPartiel +
+                ", sexe=" + sexe +
                 '}';
     }
 
@@ -65,12 +79,14 @@ public abstract class Employe {
                 Objects.equals(prenom, employe.prenom) &&
                 Objects.equals(matricule, employe.matricule) &&
                 Objects.equals(dateEmbauche, employe.dateEmbauche) &&
-                Objects.equals(salaire, employe.salaire);
+                Objects.equals(salaire, employe.salaire) &&
+                Objects.equals(tempsPartiel, employe.tempsPartiel) &&
+                Objects.equals(sexe, employe.sexe);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire);
+        return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire, tempsPartiel, sexe);
     }
 
     public String getNom() {
@@ -101,6 +117,30 @@ public abstract class Employe {
         return dateEmbauche;
     }
 
+    public Double getSalaire() {
+        return salaire;
+    }
+
+    public void setSalaire(Double salaire) {
+        this.salaire = salaire;
+    }
+
+    public Boolean getTempsPartiel() {
+        return tempsPartiel;
+    }
+
+    public void setTempsPartiel(Boolean temmpsPartiel) {
+        this.tempsPartiel = temmpsPartiel;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
     public void setDateEmbauche(LocalDate dateEmbauche) throws Exception{
         if(dateEmbauche == null){
             throw new Exception("La date d'embauche ne peut être nulle");
@@ -111,13 +151,5 @@ public abstract class Employe {
         else {
             this.dateEmbauche = dateEmbauche;
         }
-    }
-
-    public Double getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(Double salaire) {
-        this.salaire = salaire;
     }
 }
