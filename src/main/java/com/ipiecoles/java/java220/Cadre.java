@@ -9,7 +9,11 @@ public class Cadre extends Employe{
 
     @Override
     public Double getPrimeAnnuelle() {
-        return null;
+        return Entreprise.primeAnnuelleBase()*coefficient;
+    }
+
+    public Integer getNbConges(){
+        return super.getNbConges() + (int)Math.round(coefficient);
     }
 
     public Double getCoefficient() {
